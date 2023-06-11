@@ -10,7 +10,7 @@ export const MainView = () => {
             description: "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
             genre: "Drama",
             director: "Frank Darabont",          
-            image: "https://en.wikipedia.org/wiki/The_Shawshank_Redemption#/media/File:ShawshankRedemptionMoviePoster.jpg",
+            image: "https://www.alamy.com/the-shawshank-redemption-1994-directed-by-frank-darabont-and-starring-tim-robbins-morgan-freeman-and-bob-gunton-adaptation-of-stephen-kings-short-story-about-the-bond-of-friendship-between-two-prisoners-who-find-a-way-to-keep-hope-alive-in-adverse-circumstances-image408754939.html?imageid=945A41A4-4E2A-4A81-A93D-ED9ABAF90BC2&p=342367&pn=1&searchId=5be55c4f97f6b48145a8ccfd75234089&searchtype=0",
         },
         {
             id: 2,
