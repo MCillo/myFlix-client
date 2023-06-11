@@ -10,7 +10,7 @@ export const MainView = () => {
             description: "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
             genre: "Drama",
             director: "Frank Darabont",          
-            image: "https://www.imdb.com/title/tt0111161/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=1a264172-ae11-42e4-8ef7-7fed1973bb8f&pf_rd_r=P3NZTXHY52HKASDVXVBC&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_1",
+            image: "https://originalvintagemovieposters.com/wp-content/uploads/2015/05/Shawshank-Redemption-3205LB.jpg",
         },
         {
             id: 2,
@@ -18,7 +18,7 @@ export const MainView = () => {
             description: "Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.",
             genre: "Crime",
             director: "Francis Ford Coppola",          
-            image: "https://www.imdb.com/title/tt0068646/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=1a264172-ae11-42e4-8ef7-7fed1973bb8f&pf_rd_r=P3NZTXHY52HKASDVXVBC&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_2",
+            image: "https://originalvintagemovieposters.com/wp-content/uploads/2014/01/Godfather-G-1-sheet.jpg",
         },
         {
             id: 3,
@@ -26,7 +26,7 @@ export const MainView = () => {
             description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
             genre: "Action",
             director: "Christopher Nolan",        
-            image: "https://www.imdb.com/title/tt0468569/?pf_rd_m=A2FGELUUNOQJNL&pf_rd_p=1a264172-ae11-42e4-8ef7-7fed1973bb8f&pf_rd_r=P3NZTXHY52HKASDVXVBC&pf_rd_s=center-1&pf_rd_t=15506&pf_rd_i=top&ref_=chttp_tt_3",
+            image: "https://originalvintagemovieposters.com/wp-content/uploads/2020/03/Dark-Knight-70822-scaled.jpg",
         },
     ]);
 
