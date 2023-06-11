@@ -10,7 +10,7 @@ export const MainView = () => {
             description: "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
             genre: "Drama",
             director: "Frank Darabont",          
-            image: "https://www.imdb.com/title/tt0111161/mediaviewer/rm1690056449/?ref_=tt_ov_i",
+            image: "https://www.imdb.com/title/tt0111161/?ref_=tt_mv_close",
         },
         {
             id: 2,
