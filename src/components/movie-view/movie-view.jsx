@@ -2,7 +2,7 @@ export const MovieView = ({ movie, onBackClick }) => {
     return (
         <div>
             <div>
-                <img src={movie.image} />
+                <img src={movie.image} width="25%" />
             </div>
             <div>
                 <span>Title: </span>
