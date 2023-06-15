@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-com": "^1.0.6",
