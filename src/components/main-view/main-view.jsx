@@ -11,11 +11,11 @@ export const MainView = () => {
     .then((data) => {
       const moviesFromApi = data.map((doc) => {
         return {
-          id: movie.id,
-          title: movie.title,
+          id: movie._id,
+          title: movie.Title,
           image: '', // URL to Image
-          Director: {
-            Name: movie.director.Name
+          director: {
+            Name: movie.Director.Name
           }
         };
       });
