@@ -2,7 +2,7 @@ export const MovieView = ({ movie, onBackClick }) => {
   return (
     <div>
       <div>
-        <img src={movie.ImagePath} width="25%" />
+        <img src={movie.ImagePath} />
       </div>
       <div>
         <span>Title: </span>
@@ -22,5 +22,5 @@ export const MovieView = ({ movie, onBackClick }) => {
       </div>
       <button onClick={onBackClick}>Back</button>
     </div>
-  )
-}
+  );
+};
