@@ -7,21 +7,21 @@ export const MainView = () => {
 
   useEffect(() => {
     fetch("https://myflixapp-765.herokuapp.com/movies") // URL for API
-    .then((response) => response.json())
-    .then((data) => {
-      const moviesFromApi = data.map((doc) => {
-        return {
-          id: movie._id,
-          title: movie.Title,
-          image: '', // URL to Image
-          director: {
-            Name: movie.Director.Name
-          }
-        };
-      });
+      .then((response) => response.json())
+      .then((data) => {
+        const moviesFromApi = data.map((movie) => {
+          return {
+            id: movie._id,
+            title: movie.Title,
+            image: '', // URL to Image
+            director: {
+              Name: movie.Director.Name
+            }
+          };
+        });
 
-      setMovies(moviesFromApi);
-    });
+        setMovies(moviesFromApi);
+      });
   }, []);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
