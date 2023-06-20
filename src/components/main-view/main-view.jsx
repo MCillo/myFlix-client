@@ -13,9 +13,15 @@ export const MainView = () => {
           return {
             id: movie._id,
             title: movie.Title,
-            image: '', // URL to Image
+            image: movie.ImagePath,
+            description: movie.Description,
+            genre: {
+              name: movie.Genre.Name,
+              description: movie.Genre.Description,
+            },
             director: {
-              Name: movie.Director.Name
+              name: movie.Director.Name,
+              bio: movie.Director.Bio
             }
           };
         });
@@ -46,8 +52,7 @@ export const MainView = () => {
             setSelectedMovie(newSelectedMovie);
           }}
         />
-      ))
-      }
+      ))}
     </div>
   );
 };
