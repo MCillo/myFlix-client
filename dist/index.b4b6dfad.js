@@ -574,8 +574,8 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"7Us5y":[function(require,module,exports) {
-var Refresh = require("b885606d0ba7ab75");
-var ErrorOverlay = require("fae15565459a1d9a");
+var Refresh = require("809392052151a9a4");
+var ErrorOverlay = require("ffe885412c37c6ac");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -594,11 +594,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"b885606d0ba7ab75":"aM65U","fae15565459a1d9a":"aeLbW"}],"aM65U":[function(require,module,exports) {
+},{"809392052151a9a4":"aM65U","ffe885412c37c6ac":"aeLbW"}],"aM65U":[function(require,module,exports) {
 "use strict";
-module.exports = require("d0908c3c0c34fb7d");
+module.exports = require("a368f7322782af08");
 
-},{"d0908c3c0c34fb7d":"ciebZ"}],"ciebZ":[function(require,module,exports) {
+},{"a368f7322782af08":"ciebZ"}],"ciebZ":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -1059,7 +1059,7 @@ module.exports = require("d0908c3c0c34fb7d");
 })();
 
 },{}],"aeLbW":[function(require,module,exports) {
-var process = require("e06eb94d8ac5933d");
+var process = require("fa08fc73f0a3e052");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2789,7 +2789,7 @@ var process = require("e06eb94d8ac5933d");
     ]);
 });
 
-},{"e06eb94d8ac5933d":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"fa08fc73f0a3e052":"d5jf4"}],"d5jf4":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -27182,9 +27182,15 @@ const MainView = ()=>{
                 return {
                     id: movie._id,
                     title: movie.Title,
-                    image: "",
+                    image: movie.ImagePath,
+                    description: movie.Description,
+                    genre: {
+                        name: movie.Genre.Name,
+                        description: movie.Genre.Description
+                    },
                     director: {
-                        Name: movie.Director.Name
+                        name: movie.Director.Name,
+                        bio: movie.Director.Bio
                     }
                 };
             });
@@ -27197,14 +27203,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 37,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 42,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27215,12 +27221,12 @@ const MainView = ()=>{
                 }
             }, movie._id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 42,
+                lineNumber: 48,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 40,
+        lineNumber: 46,
         columnNumber: 5
     }, undefined);
 };
@@ -28053,7 +28059,7 @@ exports.export = function(dest, destName, get) {
 
 },{}],"aiVfM":[function(require,module,exports) {
 "use strict";
-var Refresh = require("3c56af6d115577c6");
+var Refresh = require("140105f0ff83b5cb");
 function debounce(func, delay) {
     {
         let timeout = undefined;
@@ -28189,7 +28195,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"3c56af6d115577c6":"aM65U"}],"ggaUx":[function(require,module,exports) {
+},{"140105f0ff83b5cb":"aM65U"}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -28205,8 +28211,7 @@ const MovieView = ({ movie , onBackClick  })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.ImagePath,
-                    width: "25%"
+                    src: movie.ImagePath
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 5,
