@@ -1,3 +1,5 @@
+// renders the detailed information for each movie when clicked
+
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <div>
