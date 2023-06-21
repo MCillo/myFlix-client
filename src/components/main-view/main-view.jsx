@@ -11,6 +11,7 @@ export const MainView = () => {
     fetch("https://myflixapp-765.herokuapp.com/movies") // URL for API
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         const moviesFromApi = data.map((movie) => {
           return {
             id: movie._id, // is this not the key for JSX ??
