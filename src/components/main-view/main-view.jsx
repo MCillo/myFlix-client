@@ -5,13 +5,15 @@ import { MovieView } from "../movie-view/movie-view";
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
   useEffect(() => {
     fetch("https://myflixapp-765.herokuapp.com/movies") // URL for API
       .then((response) => response.json())
       .then((data) => {
         const moviesFromApi = data.map((movie) => {
           return {
-            id: movie._id,
+            id: movie._id, // is this not the key for JSX ??
             title: movie.Title,
             image: movie.ImagePath,
             description: movie.Description,
@@ -30,7 +32,7 @@ export const MainView = () => {
       });
   }, []);
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  //const [selectedMovie, setSelectedMovie] = useState(null);
 
   if (selectedMovie) {
     return (
@@ -45,8 +47,8 @@ export const MainView = () => {
   return (
     <div>
       {movies.map((movie) => (
-        <MovieCard
-          key={movie._id}
+        < MovieCard
+          key={movie.id}
           movie={movie}
           onMovieClick={(newSelectedMovie) => {
             setSelectedMovie(newSelectedMovie);
