@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
@@ -22,7 +22,7 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         const moviesFromApi = data.map((movie) => {
           return {
             id: movie._id, // is this not the key for JSX ??
@@ -41,7 +41,10 @@ export const MainView = () => {
         });
 
         setMovies(moviesFromApi);
-      });
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [token]);
 
   if (!user) {
