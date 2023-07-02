@@ -4,25 +4,32 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 
+
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] =useState(null);
+  // From reading - error before login - loads "list is empty" with no login view showing
+  //const [user, setUser] = useState(storedUser ? storedUser : null);
+  //const [token, setToken] = useState(storedToken ? storedToken : null);
+  // Works to show login
+  const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  // Trial - does not work
+  // const [user, setUser] = useState(storedUser);
+  // const [token, setToken] = useState(storedToken);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    if (!token) 
-      return;
-    
-
+    console.log(storedToken);
+    if (!token) return;
+    // console.log(storedToken);
     fetch("https://myflixapp-765.herokuapp.com/movies", {
       headers: { Authorization: 'Bearer ${token}' }
     })
       .then((response) => response.json())
       .then((data) => {
-        //console.log(data);
+        console.log(data);
         const moviesFromApi = data.map((movie) => {
           return {
             id: movie._id, // is this not the key for JSX ??
@@ -56,8 +63,8 @@ export const MainView = () => {
             setToken(token);
           }} />
         <SignupView />
-      </>  
-    ); 
+      </>
+    );
   }
 
   if (selectedMovie) {
