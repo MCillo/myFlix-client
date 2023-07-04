@@ -3,16 +3,16 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   console.log("line 10: ", storedUser, storedToken);
-  // From reading - error before login - loads "list is empty" with no login view showing
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  // const [user, setUser] = useState(null);
-  // const [token, setToken] = useState(null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
@@ -27,7 +27,7 @@ export const MainView = () => {
       const jsonData = await fetchedData.json();
       const movies = jsonData.map((movie) => {
           return {
-            id: movie._id, // is this not the key for JSX ??
+            id: movie._id, 
             title: movie.Title,
             image: movie.ImagePath,
             description: movie.Description,
@@ -54,78 +54,40 @@ export const MainView = () => {
     fetchMovies();
   }, [token]);
 
-
-// 
-  // useEffect(() => {
-  //   console.log("line 24: ", storedUser, storedToken);
-  //   if (!token) return;
-  //   console.log("line 26: ", storedUser, storedToken);
-  //   fetch("https://myflixapp-765.herokuapp.com/movies", {
-  //     headers: { Authorization: 'Bearer ${token}' }
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log("line 33: ", data, storedToken);
-  //       const moviesFromApi = data.map((movie) => {
-  //         console.log("line 34: ")
-  //         return {
-  //           id: movie._id, // is this not the key for JSX ??
-  //           title: movie.Title,
-  //           image: movie.ImagePath,
-  //           description: movie.Description,
-  //           genre: {
-  //             name: movie.Genre.Name,
-  //             description: movie.Genre.Description,
-  //           },
-  //           director: {
-  //             name: movie.Director.Name,
-  //             bio: movie.Director.Bio
-  //           }
-  //         };
-  //       });
-
-  //       setMovies(moviesFromApi);
-  //     })
-  //     .catch((error) => {
-  //       console.log("line 54: ", error)
-  //     })
-  // }, [token]);
-
-  if (!user) {
-    return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }} />
-        <SignupView />
-      </>
-    );
-  }
-
-  if (selectedMovie) {
-    return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-    );
-  }
-
-  if (movies.length === 0) {
-    return <div>The list is empty!</div>;
-  }
-
-  return (
-    <div>
+return (
+  <Row className="justify-content-md-center">
+    {!user ? (
+    <Col md={5}>
+      <LoginView onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }} />
+        or
+      <SignupView />
+    </Col>        
+  ) : selectedMovie ? (
+    <Col md={"8"} style={{ border: "2px solid black" }} >
+      <MovieView style={{ border: "2px solid green" }} movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+    </Col>
+  ) : movies.length === 0 ? (
+    <div>The list is empty!</div>
+  ) : (
+    <>
       {movies.map((movie) => (
+        <Col className="mb-4" key={movie.id} md={3}>
         < MovieCard
-          key={movie.id}
           movie={movie}
           onMovieClick={(newSelectedMovie) => {
             setSelectedMovie(newSelectedMovie);
           }}
         />
-      ))}
+        </Col>
+      ))}    
+    </>
+  )}
       <button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</button>
-    </div>
+
+  </Row>
+
   );
 };
