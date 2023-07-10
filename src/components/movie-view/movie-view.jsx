@@ -1,10 +1,11 @@
 // renders the detailed information for each movie when clicked
+import "./movie-view.scss";
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <div>
       <div>
-        <img src={movie.image} width="200" height="300" />
+        <img src={movie.image} width="400" height="600" />
       </div>
       <div>
         <span>Title: </span>
@@ -22,7 +23,7 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span>Genre: </span>
         <span>{movie.genre.name}</span>
       </div>
-      <button onClick={onBackClick}>Back</button>
+      <button onClick={onBackClick} className="back-button" style={{ cursor: "pointer"}}>Back</button>
     </div>
   );
 };
