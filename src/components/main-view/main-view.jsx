@@ -1,3 +1,8 @@
+// ISSUES TO FIX
+// 1. upon successful login need to refresh to show movies list
+
+
+
 import React, { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -51,6 +56,11 @@ export const MainView = () => {
       console.log(error);
     }
   }
+
+  const handleUpdate = (user) => {
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+};
 
   useEffect(() => {
     if (!token) return;
@@ -150,7 +160,11 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col>
-                    <ProfileView user={user} />
+                      <ProfileView user={user} token={token} movies={movies} handleUpdate={handleUpdate} onLoggedOut={() => {
+                        setUser(null);
+                        setToken(null);
+                        localStorage.clear();
+                      }} />
                   </Col>
                 )}
               </>
