@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Card, Col, Form, Button } from "react-bootstrap";
+import { Row, Card, CardGroup, Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 
@@ -8,6 +8,9 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [birthday, setBirthday] = useState("");
+
+// Code for Favorite Movies
+let favoriteMovies = movies.filter(m => user.FavoriteMovies.includes(m.id))
 
     // WORKING CODE
     const handleSubmit = (event) => {
@@ -121,6 +124,32 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
             }
         }}>Delete Account</Button>
     </Form>
+
+
+{/* Favorite Movies */}
+    <Col>
+                <br></br>
+                <h4>Your Favorite Movies</h4>
+            </Col>
+            <Col md={12} className="p-2">
+                {favoriteMovies.length === 0 && (
+                    <Card className="p-4">
+                        <Card.Title>No favorites</Card.Title>
+                    </Card>
+                )}
+
+                {
+                    <CardGroup as={Row} className="mt-3 mb-3">
+                        {
+                            favoriteMovies.map((movie) => (
+                                <Col className="mb-5" key={movie.id} md={3}>
+                                    <MovieCard movie={movie} />
+                                </Col>)
+                            )
+                        }
+                    </CardGroup>
+                }
+            </Col>
     </>
     )
 }
