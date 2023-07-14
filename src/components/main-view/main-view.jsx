@@ -19,11 +19,18 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  console.log("line 10: ", storedUser, storedToken);
+  
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+console.log("line 28: ", storedUser, storedToken,user.FavoriteMovies);
+
+const handleUpdate = (user) => {
+  setUser(user);
+  localStorage.setItem("user", JSON.stringify(user));
+};
 
   // Get all movies from server and set them to local state
   async function fetchMovies() {
@@ -57,11 +64,6 @@ export const MainView = () => {
     }
   }
 
-  const handleUpdate = (user) => {
-    setUser(user);
-    localStorage.setItem("user", JSON.stringify(user));
-};
-
   useEffect(() => {
     if (!token) return;
 
@@ -74,6 +76,8 @@ export const MainView = () => {
         user={user}
         onLoggedOut={() => {
           setUser(null);
+          setToken(null);
+          localStorage.clear();
         }}
       />
       <Row className="justify-content-md-center">
@@ -104,7 +108,11 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                    <LoginView onLoggedIn={(user, token) => {
+                      setUser(user);
+                      setToken(token);
+                      }}
+                    />
                   </Col>
                 )}
               </>
@@ -122,7 +130,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} />
+                    <MovieView movies={movies} user={user} token={token} handleUpdate={handleUpdate} />
                   </Col>
                 )}
               </>
