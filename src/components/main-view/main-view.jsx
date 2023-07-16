@@ -19,18 +19,18 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  
+
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-console.log("line 28: ", storedUser, storedToken,user.FavoriteMovies);
+  //console.log("line 28: ", storedUser, storedToken,user.FavoriteMovies);
 
-const handleUpdate = (user) => {
-  setUser(user);
-  localStorage.setItem("user", JSON.stringify(user));
-};
+  const handleUpdate = (user) => {
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+  };
 
   // Get all movies from server and set them to local state
   async function fetchMovies() {
@@ -42,20 +42,20 @@ const handleUpdate = (user) => {
       });
       const jsonData = await fetchedData.json();
       const movies = jsonData.map((movie) => {
-          return {
-            id: movie._id, 
-            title: movie.Title,
-            image: movie.ImagePath,
-            description: movie.Description,
-            genre: {
-              name: movie.Genre.Name,
-              description: movie.Genre.Description,
-            },
-            director: {
-              name: movie.Director.Name,
-              bio: movie.Director.Bio
-            }
-          };
+        return {
+          id: movie._id,
+          title: movie.Title,
+          image: movie.ImagePath,
+          description: movie.Description,
+          genre: {
+            name: movie.Genre.Name,
+            description: movie.Genre.Description,
+          },
+          director: {
+            name: movie.Director.Name,
+            bio: movie.Director.Bio
+          }
+        };
       });
 
       setMovies(movies);
@@ -111,7 +111,7 @@ const handleUpdate = (user) => {
                     <LoginView onLoggedIn={(user, token) => {
                       setUser(user);
                       setToken(token);
-                      }}
+                    }}
                     />
                   </Col>
                 )}
@@ -168,11 +168,11 @@ const handleUpdate = (user) => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col>
-                      <ProfileView user={user} token={token} movies={movies} handleUpdate={handleUpdate} onLoggedOut={() => {
-                        setUser(null);
-                        setToken(null);
-                        localStorage.clear();
-                      }} />
+                    <ProfileView user={user} token={token} movies={movies} handleUpdate={handleUpdate} onLoggedOut={() => {
+                      setUser(null);
+                      setToken(null);
+                      localStorage.clear();
+                    }} />
                   </Col>
                 )}
               </>
