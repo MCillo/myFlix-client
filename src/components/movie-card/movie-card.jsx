@@ -13,11 +13,13 @@ export const MovieCard = ({ movie }) => {
         <Card.Text>Director: {movie.director.name}</Card.Text>
         <Card.Text>Genre: {movie.genre.name}</Card.Text>
         {/* <Card.Footer> */}
-        <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
-          <Button variant="dark">
-            More Information
-          </Button>
-        </Link>
+        <div style={{ marginBottom: '5px' }}>
+          <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
+            <Button variant="dark" className="mt-auto">
+              More Information
+            </Button >
+          </Link>
+        </div>
         {/* </Card.Footer> */}
       </Card.Body>
     </Card>
