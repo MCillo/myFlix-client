@@ -76,7 +76,7 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
       <Row>
         <Col style={{}}></Col>
         < Col >
-          <Card className="text-center" style={{ width: '400px' }}>
+          <Card className="text-center" border="warning" style={{ width: '400px' }}>
             <Card.Img variant="top" src={movie.image} width="400" height="600" />
 
             <Card.Body>
@@ -91,13 +91,13 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
               <Link to={`/`}>
                 <Button variant="dark" >Return to Main</Button>
               </Link>
-              <Card.Footer>
-                {/* {favorite ? */}
-                <Button className="float-end" variant="outline-dark" onClick={removeFavorite}>Remove from Favorites</Button>
-                {/* :  */}
-                <Button className="float-end" variant="outline-dark" onClick={addFavorite}>Add to Favorites</Button>
-                {/* } */}
-              </Card.Footer>
+              {/* <Card.Footer> */}
+              {/* {favorite ? */}
+              <Button className="float-end" variant="outline-dark" onClick={removeFavorite}>Remove from Favorites</Button>
+              {/* :  */}
+              <Button className="float-end" variant="outline-dark" onClick={addFavorite}>Add to Favorites</Button>
+              {/* } */}
+              {/* </Card.Footer> */}
             </Card.Body >
           </Card >
         </Col>
