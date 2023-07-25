@@ -23,15 +23,17 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  // const [filteredMovies, setFilteredMovies] = useState("");
 
-  //console.log("line 28: ", storedUser, storedToken,user.FavoriteMovies);
+  // For Searching and filtering movies
+  // const filteredMovies = movies.filter((movie) => 
+  // )
 
+  // For updating the user
   const handleUpdate = (user) => {
     setUser(user);
     localStorage.setItem("user", JSON.stringify(user));
   };
-
   // Get all movies from server and set them to local state
   async function fetchMovies() {
     try {
@@ -178,6 +180,8 @@ export const MainView = () => {
               </>
             }
           />
+          {/* Filtered Movies Route */}
+
         </Routes>
       </Row>
     </BrowserRouter>
