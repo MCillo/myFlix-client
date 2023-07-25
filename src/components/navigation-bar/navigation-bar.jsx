@@ -1,7 +1,9 @@
-import { Container, Navbar, Nav } from "react-bootstrap"
+import React from "react";
+import { useState } from "react";
+import { Container, Navbar, Nav, Form, FormControl } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut,}) => {
   return (
     <Navbar bg="light" expand="lg" sticky="top" className="mb-3">
       <Container>
@@ -30,10 +32,11 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 <Nav.Link as={Link} to="/profile">
                   Profile
                 </Nav.Link>
-                <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                <Nav.Link onClick={onLoggedOut}>
+                  Logout
+                </Nav.Link>
               </>
             )}
-
           </Nav>
         </Navbar.Collapse>
       </Container>
