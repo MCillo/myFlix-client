@@ -5,8 +5,10 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import "./movie-view.scss";
+import { useSelector } from "react-redux";
 
-export const MovieView = ({ movies, user, token, handleUpdate }) => {
+export const MovieView = ({ user, token, handleUpdate }) => {
+  const movies = useSelector((state) => state.movies);
   const { movieId } = useParams();
 
   const movie = movies.find((m) => m.id === movieId);
