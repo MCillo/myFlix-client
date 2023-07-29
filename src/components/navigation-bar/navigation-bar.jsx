@@ -5,14 +5,13 @@ import { Link } from "react-router-dom"
 
 export const NavigationBar = ({ user, onLoggedOut,}) => {
   return (
-    <Navbar bg="light" expand="lg" sticky="top" className="mb-3">
+    <Navbar bg="dark" data-bs-theme="dark" expand="lg" sticky="top" className="mb-3">
       <Container>
         <Navbar.Brand as={Link} to="/">
           MyFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          {/* <Navbar.Text>Welcome {user.Username.toUpperCase()}</Navbar.Text> */}
           <Nav className="me-auto">
             {!user && (
               <>
