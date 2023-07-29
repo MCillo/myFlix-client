@@ -31,4 +31,4 @@ Create the client side for a Single Page Application titled MyFlix using React t
 * React-Bootstrap
 * Parcel
 
-## View the Application [Here](myflix765.netlify.app)
+## View the Application [Here](https://myflix765.netlify.app/login)
