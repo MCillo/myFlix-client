@@ -69,7 +69,6 @@ export const LoginView = ({ onLoggedIn }) => {
             Login
           </Button>
           </div>
-          <Form.Label>Not a user? </Form.Label>
         </Form>
       </Card.Body>
     </Card>
