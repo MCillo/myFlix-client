@@ -132,12 +132,16 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
               />
             </Form.Group>
             {/* <Card.Footer className="text-center"> */}
+            <div >
             <Button variant="dark" type="submit">Update Account</Button>
-            <Button variant="dark" onClick={() => {
+            
+            
+            <Button className="float-end" variant="danger" onClick={() => {
               if (confirm("You are about to permanently delete your account.")) {
                 handleDelete();
               }
             }}>Delete Account</Button>
+            </div>
             {/* </Card.Footer> */}
           </Form>
         </Card.Body>

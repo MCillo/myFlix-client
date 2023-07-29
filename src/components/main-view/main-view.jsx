@@ -13,6 +13,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -23,15 +24,13 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [filteredMovies, setFilteredMovies] = useState("");
 
-  //console.log("line 28: ", storedUser, storedToken,user.FavoriteMovies);
-
+  // For updating the user
   const handleUpdate = (user) => {
     setUser(user);
     localStorage.setItem("user", JSON.stringify(user));
   };
-
   // Get all movies from server and set them to local state
   async function fetchMovies() {
     try {
@@ -144,15 +143,27 @@ export const MainView = () => {
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
-                      <Col className="mb-4" key={movie.id} md={3}>
-                        <MovieCard movie={movie} />
-                      </Col>
-                    ))}
+                    <Row className="mt-1 mb-1">
+                      <Form.Control
+                        type="text"
+                        placeholder="Search"
+                        value={filteredMovies}
+                        onChange={(e) => setFilteredMovies(e.target.value)}
+                      />
+                    </Row>
+                    {movies.length === 0 ? (
+                      <Col>The list is empty!</Col>
+                    ) : (
+                      movies.filter((movie) => movie.title.toLowerCase().includes(filteredMovies.toLowerCase())
+                      )
+                        .map((movie) => (
+                          <Col className="mb-4" key={movie.id} md={3}>
+                            <MovieCard movie={movie} />
+                          </Col>
+                        ))
+                    )}
                   </>
                 )}
               </>
