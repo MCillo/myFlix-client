@@ -26,10 +26,6 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState("");
 
-  // For Searching and filtering movies
-  // const filteredMovies = movies.filter((movie) => 
-  // )
-
   // For updating the user
   const handleUpdate = (user) => {
     setUser(user);
@@ -193,8 +189,6 @@ export const MainView = () => {
               </>
             }
           />
-          {/* Filtered Movies Route */}
-
         </Routes>
       </Row>
     </BrowserRouter>
