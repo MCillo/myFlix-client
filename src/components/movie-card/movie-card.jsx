@@ -12,7 +12,6 @@ export const MovieCard = ({ movie }) => {
         <Card.Title>{movie.title}</Card.Title>
         <Card.Text>Director: {movie.director.name}</Card.Text>
         <Card.Text>Genre: {movie.genre.name}</Card.Text>
-        {/* <Card.Footer> */}
         <div style={{ marginBottom: '5px' }}>
           <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
             <Button variant="dark" className="mt-auto">
@@ -20,7 +19,6 @@ export const MovieCard = ({ movie }) => {
             </Button >
           </Link>
         </div>
-        {/* </Card.Footer> */}
       </Card.Body>
     </Card>
   );
