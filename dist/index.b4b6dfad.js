@@ -47162,13 +47162,6 @@ const LoginView = ({ onLoggedIn })=>{
                         fileName: "src/components/login-view/login-view.jsx",
                         lineNumber: 67,
                         columnNumber: 11
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Label, {
-                        children: "Not a user? "
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 72,
-                        columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
