@@ -10,15 +10,11 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
   const { movieId } = useParams();
 
   const movie = movies.find((m) => m.id === movieId);
-
-  // Test Code Start
-
   const [favorite, setFavorite] = useState(user.FavoriteMovies.includes(movie.id));
 
   useEffect(() => {
     setFavorite(user.FavoriteMovies.includes(movie.id));
   }, [movieId])
-
 
   // Add a movie to users favorite movies array
   const addFavorite = (() => {
@@ -76,28 +72,25 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
       <Row>
         <Col style={{}}></Col>
         < Col >
-          <Card className="text-center" border="warning" style={{ width: '400px' }}>
+          <Card className="text-center" border="dark" style={{ width: '400px' }}>
             <Card.Img variant="top" src={movie.image} width="400" height="600" />
 
             <Card.Body>
-              {/* <Card.Subtitle as="h5">Title: </Card.Subtitle> */}
               <Card.Title as="h4">{movie.title}</Card.Title>
-              {/* <Card.Subtitle>Description: </Card.Subtitle> */}
               <Card.Text>{movie.description}</Card.Text>
               <Card.Subtitle as="h5">Director:</Card.Subtitle>
               <Card.Text>{movie.director.name}</Card.Text>
               <Card.Subtitle as="h5">Genre: </Card.Subtitle>
               <Card.Text>{movie.genre.name}</Card.Text>
+              <div className="text-center">
               <Link to={`/`}>
                 <Button variant="dark" >Return to Main</Button>
               </Link>
-              {/* <Card.Footer> */}
-              {/* {favorite ? */}
-              <Button className="float-end" variant="outline-dark" onClick={removeFavorite}>Remove from Favorites</Button>
-              {/* :  */}
-              <Button className="float-end" variant="outline-dark" onClick={addFavorite}>Add to Favorites</Button>
-              {/* } */}
-              {/* </Card.Footer> */}
+              </div>
+              <div>
+              <Button className="text-left" variant="outline-dark" onClick={removeFavorite}>Remove from Favorites</Button>
+              <Button className="text-right" variant="outline-dark" onClick={addFavorite}>Add to Favorites</Button>
+              </div>
             </Card.Body >
           </Card >
         </Col>
