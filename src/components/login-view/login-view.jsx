@@ -13,12 +13,8 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
     const data = {
-      // does not work - allows login, shows liest is empty- unauthorized user
       Username: username,
       Password: password
-      // comes back as no such user
-      // username: username,
-      // password: password
     };
 
     fetch("https://myflixapp-765.herokuapp.com/login", {
@@ -34,7 +30,6 @@ export const LoginView = ({ onLoggedIn }) => {
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          console.log(data.token); // testing purpose
           onLoggedIn(data.user, data.token);
         } else {
           alert("No such user");
@@ -69,9 +64,12 @@ export const LoginView = ({ onLoggedIn }) => {
               required
             />
           </Form.Group>
+          <div className="text-center">
           <Button variant="dark" type="submit">
             Login
           </Button>
+          </div>
+          <Form.Label>Not a user? </Form.Label>
         </Form>
       </Card.Body>
     </Card>
