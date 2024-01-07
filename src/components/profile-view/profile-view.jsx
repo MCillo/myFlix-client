@@ -23,7 +23,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
       Birthday: birthday
     }
 
-    fetch(`https://myflixapp-765.herokuapp.com/users/${user.Username}`, {
+    fetch(`http://52.73.113.117/users/${user.Username}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -52,7 +52,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
 
   // DELETE USER'S INFORMATION
   const handleDelete = () => {
-    fetch(`https://myflixapp-765.herokuapp.com/users/${user.Username}`, {
+    fetch(`http://52.73.113.117/users/${user.Username}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
