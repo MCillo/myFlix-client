@@ -18,7 +18,9 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
 
   // Add a movie to users favorite movies array
   const addFavorite = (() => {
-    fetch(`https://myflixapp-765.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+    // fetch(`http://52.73.113.117/users/${user.Username}/movies/${movieId}`, { 
+    fetch(`http://52.73.113.117/users/${user.Username}/movies/${movieId}`, {
+
       method: "POST",
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -43,7 +45,7 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
   })
   // Remove a movie from the users FavoriteMovies array
   const removeFavorite = (() => {
-    fetch(`https://myflixapp-765.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
+    fetch(`http://52.73.113.117/users/${user.Username}/movies/${movieId}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
