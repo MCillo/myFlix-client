@@ -34,7 +34,7 @@ export const MainView = () => {
   // Get all movies from server and set them to local state
   async function fetchMovies() {
     try {
-      const fetchedData = await fetch(`https://myflixapp-765.herokuapp.com/movies`, {
+      const fetchedData = await fetch(`http://52.73.113.117/movies`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
