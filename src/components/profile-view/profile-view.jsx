@@ -3,7 +3,7 @@ import { Row, Card, CardGroup, Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 
-export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) => {
+export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut, apiUrl }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
       Birthday: birthday
     }
 
-    fetch(`http://52.73.113.117/users/${user.Username}`, {
+    fetch(`${apiUrl}/users/${user.Username}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -52,7 +52,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut }) 
 
   // DELETE USER'S INFORMATION
   const handleDelete = () => {
-    fetch(`http://52.73.113.117/users/${user.Username}`, {
+    fetch(`${apiUrl}/users/${user.Username}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
