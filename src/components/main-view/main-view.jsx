@@ -26,6 +26,8 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState("");
 
+  const apiUrl = 'http://34.203.234.174';
+
   // For updating the user
   const handleUpdate = (user) => {
     setUser(user);
@@ -34,7 +36,7 @@ export const MainView = () => {
   // Get all movies from server and set them to local state
   async function fetchMovies() {
     try {
-      const fetchedData = await fetch(`http://52.73.113.117/movies`, {
+      const fetchedData = await fetch(`apiUrl' + '/movies`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -91,7 +93,7 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <SignupView />
+                      <SignupView apiUrl={apiUrl} />
                   </Col>
                 )}
               </>
@@ -110,7 +112,8 @@ export const MainView = () => {
                     <LoginView onLoggedIn={(user, token) => {
                       setUser(user);
                       setToken(token);
-                    }}
+                      }}
+                        apiUrl={apiUrl}
                     />
                   </Col>
                 )}
@@ -129,7 +132,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} user={user} token={token} handleUpdate={handleUpdate} />
+                    <MovieView movies={movies} user={user} token={token} handleUpdate={handleUpdate} apiUrl={apiUrl} />
                   </Col>
                 )}
               </>
@@ -160,7 +163,7 @@ export const MainView = () => {
                       )
                         .map((movie) => (
                           <Col className="mb-4" key={movie.id} md={3}>
-                            <MovieCard movie={movie} />
+                            <MovieCard movie={movie} apiUrl={apiUrl} />
                           </Col>
                         ))
                     )}
@@ -183,7 +186,7 @@ export const MainView = () => {
                       setUser(null);
                       setToken(null);
                       localStorage.clear();
-                    }} />
+                    }} apiUrl={apiUrl} />
                   </Col>
                 )}
               </>
