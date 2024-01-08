@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const SignupView = () => {
+export const SignupView = (apiUrl) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ export const SignupView = () => {
       Birthday: birthday
     };
 
-    fetch("http://52.73.113.117/users/", {
+    fetch('apiUrl' + '/users/', {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
