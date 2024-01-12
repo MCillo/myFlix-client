@@ -23,7 +23,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut, ap
       Birthday: birthday
     }
 
-    fetch(`${apiUrl}/users/${user.Username}`, {
+    fetch(`http://34.203.234.174/users/${user.Username}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -52,7 +52,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut, ap
 
   // DELETE USER'S INFORMATION
   const handleDelete = () => {
-    fetch(`${apiUrl}/users/${user.Username}`, {
+    fetch(`http://34.203.234.174/users/${user.Username}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
