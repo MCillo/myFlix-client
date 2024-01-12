@@ -27212,8 +27212,8 @@ const MainView = ()=>{
     // Get all movies from server and set them to local state
     async function fetchMovies() {
         try {
-            // const fetchedData = await fetch(`http://34.203.234.174/movies`, {
-            const fetchedData = await fetch(`http://localhost:1234/movies`, {
+            const fetchedData = await fetch(`http://34.203.234.174/movies`, {
+                // const fetchedData = await fetch(`http://localhost:1234/movies`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -47073,9 +47073,9 @@ const LoginView = ({ onLoggedIn })=>{
             Username: username,
             Password: password
         };
-        // fetch('http://34.203.234.174/login', {
-        // fetch('http://34.203.234.174/login', {
-        fetch("http://localhost:1234/login", {
+        fetch("http://34.203.234.174/login", {
+            // fetch('http://34.203.234.174/login', {
+            // fetch('http://localhost:1234/login', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
