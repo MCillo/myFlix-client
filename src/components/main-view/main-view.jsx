@@ -26,9 +26,6 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState("");
 
-  // Look into implementing this 
-  // const apiUrl = 'http://34.203.234.174'; // trying to pass the IP address 
-
   // For updating the user
   const handleUpdate = (user) => {
     setUser(user);
@@ -37,9 +34,9 @@ export const MainView = () => {
   // Get all movies from server and set them to local state
   async function fetchMovies() {
     try {
-      // const fetchedData = await fetch(`apiUrl' + '/movies`, {
-      const fetchedData = await fetch(`http://34.203.234.174/movies`, {
-        headers: {
+      // const fetchedData = await fetch(`http://34.203.234.174/movies`, {
+      const fetchedData = await fetch(`http://localhost:1234/movies`, {
+              headers: {
           Authorization: `Bearer ${token}`,
         },
       });
