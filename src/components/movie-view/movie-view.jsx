@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import "./movie-view.scss";
 
-export const MovieView = ({ movies, user, token, handleUpdate, apiUrl }) => {
+export const MovieView = ({ movies, user, token, handleUpdate }) => {
   const { movieId } = useParams();
 
   const movie = movies.find((m) => m.id === movieId);
