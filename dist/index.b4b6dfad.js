@@ -27204,7 +27204,8 @@ const MainView = ()=>{
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
     const [filteredMovies, setFilteredMovies] = (0, _react.useState)("");
-    const apiUrl = "http://34.203.234.174";
+    // Look into implementing this 
+    // const apiUrl = 'http://34.203.234.174'; // trying to pass the IP address 
     // For updating the user
     const handleUpdate = (user)=>{
         setUser(user);
@@ -27213,7 +27214,8 @@ const MainView = ()=>{
     // Get all movies from server and set them to local state
     async function fetchMovies() {
         try {
-            const fetchedData = await fetch(`apiUrl' + '/movies`, {
+            // const fetchedData = await fetch(`apiUrl' + '/movies`, {
+            const fetchedData = await fetch(`http://34.203.234.174/movies`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -27257,7 +27259,7 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 76,
+                lineNumber: 78,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
@@ -27271,14 +27273,12 @@ const MainView = ()=>{
                                     to: "/"
                                 }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                     md: 5,
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {
-                                        apiUrl: apiUrl
-                                    }, void 0, false, void 0, void 0)
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 88,
+                            lineNumber: 90,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27292,14 +27292,13 @@ const MainView = ()=>{
                                         onLoggedIn: (user, token)=>{
                                             setUser(user);
                                             setToken(token);
-                                        },
-                                        apiUrl: apiUrl
+                                        }
                                     }, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 104,
+                            lineNumber: 106,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27316,14 +27315,13 @@ const MainView = ()=>{
                                         movies: movies,
                                         user: user,
                                         token: token,
-                                        handleUpdate: handleUpdate,
-                                        apiUrl: apiUrl
+                                        handleUpdate: handleUpdate
                                     }, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 125,
+                            lineNumber: 126,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27349,8 +27347,7 @@ const MainView = ()=>{
                                                 className: "mb-4",
                                                 md: 3,
                                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                                                    movie: movie,
-                                                    apiUrl: apiUrl
+                                                    movie: movie
                                                 }, void 0, false, void 0, void 0)
                                             }, movie.id, false, void 0, void 0))
                                     ]
@@ -27358,7 +27355,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 143,
+                            lineNumber: 144,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27377,31 +27374,30 @@ const MainView = ()=>{
                                             setUser(null);
                                             setToken(null);
                                             localStorage.clear();
-                                        },
-                                        apiUrl: apiUrl
+                                        }
                                     }, void 0, false, void 0, void 0)
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 177,
+                            lineNumber: 178,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 85,
+                    lineNumber: 87,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 84,
+                lineNumber: 86,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 75,
+        lineNumber: 77,
         columnNumber: 5
     }, undefined);
 };
@@ -46831,8 +46827,8 @@ const MovieView = ({ movies, user, token, handleUpdate, apiUrl })=>{
     ]);
     // Add a movie to users favorite movies array
     const addFavorite = ()=>{
-        // fetch(`http://52.73.113.117/users/${user.Username}/movies/${movieId}`, { 
-        fetch(`${apiUrl}/users/${user.Username}/movies/${movieId}`, {
+        fetch(`http://34.203.234.174/users/${user.Username}/movies/${movieId}`, {
+            // fetch(`${apiUrl}/users/${user.Username}/movies/${movieId}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -46855,7 +46851,7 @@ const MovieView = ({ movies, user, token, handleUpdate, apiUrl })=>{
     };
     // Remove a movie from the users FavoriteMovies array
     const removeFavorite = ()=>{
-        fetch(`${apiUrl}/users/${user.Username}/movies/${movieId}`, {
+        fetch(`http://34.203.234.174/users/${user.Username}/movies/${movieId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -47068,7 +47064,7 @@ var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _form = require("react-bootstrap/Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
 var _s = $RefreshSig$();
-const LoginView = ({ onLoggedIn, apiUrl })=>{
+const LoginView = ({ onLoggedIn })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -47079,9 +47075,7 @@ const LoginView = ({ onLoggedIn, apiUrl })=>{
             Username: username,
             Password: password
         };
-        console.log(apiUrl);
-        // fetch('http://34.203.234.174/login', {
-        fetch("apiUrl/login", {
+        fetch("http://34.203.234.174/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -47111,7 +47105,7 @@ const LoginView = ({ onLoggedIn, apiUrl })=>{
                                 children: "Username:"
                             }, void 0, false, {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 51,
+                                lineNumber: 49,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -47122,13 +47116,13 @@ const LoginView = ({ onLoggedIn, apiUrl })=>{
                                 minLength: "3"
                             }, void 0, false, {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 52,
+                                lineNumber: 50,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 50,
+                        lineNumber: 48,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -47138,7 +47132,7 @@ const LoginView = ({ onLoggedIn, apiUrl })=>{
                                 children: "Password:"
                             }, void 0, false, {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 62,
+                                lineNumber: 60,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -47148,13 +47142,13 @@ const LoginView = ({ onLoggedIn, apiUrl })=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 63,
+                                lineNumber: 61,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 61,
+                        lineNumber: 59,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -47165,28 +47159,28 @@ const LoginView = ({ onLoggedIn, apiUrl })=>{
                             children: "Login"
                         }, void 0, false, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 71,
+                            lineNumber: 69,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 70,
+                        lineNumber: 68,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 49,
+                lineNumber: 47,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 48,
+            lineNumber: 46,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 47,
+        lineNumber: 45,
         columnNumber: 5
     }, undefined);
 };
@@ -47232,7 +47226,7 @@ const SignupView = (apiUrl)=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("apiUrl/users/", {
+        fetch("http://34.203.234.174/users/", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -47427,7 +47421,7 @@ const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut, apiUrl })
             Email: email,
             Birthday: birthday
         };
-        fetch(`${apiUrl}/users/${user.Username}`, {
+        fetch(`http://34.203.234.174/users/${user.Username}`, {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -47451,7 +47445,7 @@ const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut, apiUrl })
     };
     // DELETE USER'S INFORMATION
     const handleDelete = ()=>{
-        fetch(`${apiUrl}/users/${user.Username}`, {
+        fetch(`http://34.203.234.174/users/${user.Username}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
