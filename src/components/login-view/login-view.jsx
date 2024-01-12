@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const LoginView = ({ onLoggedIn, apiUrl }) => {
+export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,10 +16,8 @@ export const LoginView = ({ onLoggedIn, apiUrl }) => {
       Username: username,
       Password: password
     };
-    console.log(apiUrl);
-    
-    // fetch('http://34.203.234.174/login', {
-    fetch('apiUrl' + '/login', {
+
+    fetch('http://34.203.234.174/login', {
 
       method: "POST",
       headers: {
