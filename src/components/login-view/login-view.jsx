@@ -18,7 +18,9 @@ export const LoginView = ({ onLoggedIn }) => {
     };
 
     // fetch('http://34.203.234.174/login', {
-    fetch('http://localhost/login', {
+    // fetch('http://34.203.234.174/login', {
+    
+    fetch('http://localhost:1234/login', {
     
       method: "POST",
       headers: {
