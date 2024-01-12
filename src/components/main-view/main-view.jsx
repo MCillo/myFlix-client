@@ -34,8 +34,8 @@ export const MainView = () => {
   // Get all movies from server and set them to local state
   async function fetchMovies() {
     try {
-      // const fetchedData = await fetch(`http://34.203.234.174/movies`, {
-      const fetchedData = await fetch(`http://localhost:1234/movies`, {
+      const fetchedData = await fetch(`http://34.203.234.174/movies`, {
+      // const fetchedData = await fetch(`http://localhost:1234/movies`, {
               headers: {
           Authorization: `Bearer ${token}`,
         },
