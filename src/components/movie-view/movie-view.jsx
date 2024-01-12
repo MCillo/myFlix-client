@@ -18,8 +18,8 @@ export const MovieView = ({ movies, user, token, handleUpdate, apiUrl }) => {
 
   // Add a movie to users favorite movies array
   const addFavorite = (() => {
-    // fetch(`http://52.73.113.117/users/${user.Username}/movies/${movieId}`, { 
-    fetch(`${apiUrl}/users/${user.Username}/movies/${movieId}`, {
+    fetch(`http://34.203.234.174/users/${user.Username}/movies/${movieId}`, { 
+    // fetch(`${apiUrl}/users/${user.Username}/movies/${movieId}`, {
 
       method: "POST",
       headers: { Authorization: `Bearer ${token}` }
@@ -45,7 +45,7 @@ export const MovieView = ({ movies, user, token, handleUpdate, apiUrl }) => {
   })
   // Remove a movie from the users FavoriteMovies array
   const removeFavorite = (() => {
-    fetch(`${apiUrl}/users/${user.Username}/movies/${movieId}`, {
+    fetch(`http://34.203.234.174/users/${user.Username}/movies/${movieId}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
