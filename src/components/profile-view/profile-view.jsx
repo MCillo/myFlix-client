@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Card, CardGroup, Col, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
+import { MyFlixUrl } from '../../utils/url';
 
 export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut, apiUrl }) => {
   const [username, setUsername] = useState("");
@@ -23,7 +24,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut, ap
       Birthday: birthday
     }
 
-    fetch(`http://34.203.234.174/users/${user.Username}`, {
+    fetch( MyFlixUrl +`/users/${user.Username}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -52,7 +53,7 @@ export const ProfileView = ({ user, token, movies, handleUpdate, onLoggedOut, ap
 
   // DELETE USER'S INFORMATION
   const handleDelete = () => {
-    fetch(`http://34.203.234.174/users/${user.Username}`, {
+    fetch(MyFlixUrl + `/users/${user.Username}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
