@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { MyFlixUrl } from '../../utils/url'
+
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -17,11 +19,7 @@ export const LoginView = ({ onLoggedIn }) => {
       Password: password
     };
 
-    fetch('http://34.203.234.174/login', {
-    // fetch('http://34.203.234.174/login', {
-    
-    // fetch('http://localhost:1234/login', {
-    
+      fetch( MyFlixUrl + '/login', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -42,6 +40,7 @@ export const LoginView = ({ onLoggedIn }) => {
       .catch((e) => {
         alert("Something went wrong");
       });
+
   }
 
   return (
