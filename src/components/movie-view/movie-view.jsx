@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import "./movie-view.scss";
+import { MyFlixUrl } from '../../utils/url';
 
 export const MovieView = ({ movies, user, token, handleUpdate }) => {
   const { movieId } = useParams();
@@ -18,7 +19,7 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
 
   // Add a movie to users favorite movies array
   const addFavorite = (() => {
-    fetch(`http://34.203.234.174/users/${user.Username}/movies/${movieId}`, { 
+    fetch( MyFlixUrl + `/users/${user.Username}/movies/${movieId}`, { 
     // fetch(`${apiUrl}/users/${user.Username}/movies/${movieId}`, {
 
       method: "POST",
@@ -45,7 +46,7 @@ export const MovieView = ({ movies, user, token, handleUpdate }) => {
   })
   // Remove a movie from the users FavoriteMovies array
   const removeFavorite = (() => {
-    fetch(`http://34.203.234.174/users/${user.Username}/movies/${movieId}`, {
+    fetch( MyFlixUrl + `/users/${user.Username}/movies/${movieId}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` }
     })
