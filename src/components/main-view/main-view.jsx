@@ -10,6 +10,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { MyFlixUrl } from '../../utils/url'
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -34,8 +35,7 @@ export const MainView = () => {
   // Get all movies from server and set them to local state
   async function fetchMovies() {
     try {
-      const fetchedData = await fetch(`http://34.203.234.174/movies`, {
-      // const fetchedData = await fetch(`http://localhost:1234/movies`, {
+      const fetchedData = await fetch( MyFlixUrl +  `/movies`, {
               headers: {
           Authorization: `Bearer ${token}`,
         },
