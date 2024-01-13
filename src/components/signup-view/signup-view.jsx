@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { MyFlixUrl } from '../../utils/url';
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -19,7 +20,8 @@ export const SignupView = () => {
       Birthday: birthday
     };
 
-    fetch('http://34.203.234.174/users/', {
+    fetch(MyFlixUrl + '/users/', {
+
       method: "POST",
       body: JSON.stringify(data),
       headers: {
