@@ -1,6 +1,6 @@
 .back-button {
   color: #f5f5f5;
-  background-color: #1e90ff;
+  background-color: #adff2f;
   border: none;
   border-radius: 4px;
   padding: 4px 12px;
@@ -81,8 +81,8 @@
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
   --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg: #afbac3;
-  --bs-body-bg-rgb: 175, 186, 195;
+  --bs-body-bg: #adb5bd;
+  --bs-body-bg-rgb: 173, 181, 189;
   --bs-emphasis-color: #000;
   --bs-emphasis-color-rgb: 0, 0, 0;
   --bs-secondary-color: #212529bf;
@@ -507,7 +507,31 @@ legend + * {
   clear: left;
 }
 
-:is(::-webkit-datetime-edit-fields-wrapper, ::-webkit-datetime-edit-text, ::-webkit-datetime-edit-minute, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-year-field) {
+::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+::-webkit-datetime-edit-text {
+  padding: 0;
+}
+
+::-webkit-datetime-edit-minute {
+  padding: 0;
+}
+
+::-webkit-datetime-edit-hour-field {
+  padding: 0;
+}
+
+::-webkit-datetime-edit-day-field {
+  padding: 0;
+}
+
+::-webkit-datetime-edit-month-field {
+  padding: 0;
+}
+
+::-webkit-datetime-edit-year-field {
   padding: 0;
 }
 
@@ -2631,11 +2655,11 @@ textarea.form-control-lg {
 }
 
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #afbac3, 0 0 0 .25rem #2e8b5740;
+  box-shadow: 0 0 0 1px #adb5bd, 0 0 0 .25rem #2e8b5740;
 }
 
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #afbac3, 0 0 0 .25rem #2e8b5740;
+  box-shadow: 0 0 0 1px #adb5bd, 0 0 0 .25rem #2e8b5740;
 }
 
 .form-range::-moz-focus-outer {
@@ -5767,8 +5791,7 @@ textarea.form-control-lg {
   position: fixed;
   top: 0;
   left: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
 }
 
 .modal-dialog {
