@@ -1,14 +1,13 @@
 // ISSUES TO FIX
 // 1. upon successful login need to refresh to show movies list
 
-
-
 import React, { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
+import { GalleryView } from "../gallery-view/gallery-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { MyFlixUrl } from '../../utils/url'
 
@@ -27,6 +26,8 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState("");
 
+  const [gallery, setGallery] = useState([]);
+  console.log(gallery);
   // For updating the user
   const handleUpdate = (user) => {
     setUser(user);
@@ -64,6 +65,34 @@ export const MainView = () => {
     }
   }
 
+  //Used to return gallery of images
+
+useEffect(() => {
+  // fetch(`${MyFlixUrl}/images`, {
+  fetch('http://localhost:8080/images', {
+  
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin":
+          "http:localhost:8080",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+    .then((data) => {
+      console.log(data);
+        const newGallery = data.Contents.map((image) => {
+          return image.Key;
+        });
+        setGallery(newGallery);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  // Used to retrun list of movies
   useEffect(() => {
     if (!token) return;
 
@@ -191,6 +220,31 @@ export const MainView = () => {
               </>
             }
           />
+
+          {/* Gallery Route */}
+          <Route
+            path="/gallery"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                    <Col>
+                      <GalleryView 
+                        gallery={gallery}
+                        upLoadImage={(imageName) => {
+                          setGallery((prevGallery) => [
+                            ...prevGallery,
+                            imageName,
+                          ]);
+                        }}
+                      />
+                  </Col>
+                )}
+              </>
+            }
+          />
+
         </Routes>
       </Row>
     </BrowserRouter>
