@@ -68,13 +68,14 @@ export const MainView = () => {
   //Used to return gallery of images
 
 useEffect(() => {
-  // fetch(`${MyFlixUrl}/images`, {
-  fetch('http://localhost:8080/images', {
+  fetch(`${MyFlixUrl}/images`, {
+  // fetch('http://localhost:8080/images', {
   
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin":
-          "http:localhost:8080",
+          // "http:localhost:8080",
+          "MyFlix-Load-Balancer-2030192027.us-east-1.elb.amazonaws.com/",
       },
     })
       .then((res) => {
