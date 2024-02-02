@@ -49,7 +49,9 @@ export const GalleryView = ({ gallery, addImage }) => {
             <div>
                 {gallery.map((imageName) => {
                     return <Image 
-                        src={`http://localhost:8080/view-image/${imageName}`} rounded />;
+                       // src={`http://localhost:8080/view-image/${imageName}`} rounded />; localhost testing
+                        src={`http://${MyFlixUrl}/view-image/${imageName}`} rounded />;
+                    
                 })}
             </div>
         </Container>
