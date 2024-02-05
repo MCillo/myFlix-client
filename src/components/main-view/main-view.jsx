@@ -36,8 +36,8 @@ export const MainView = () => {
   // Get all movies from server and set them to local state
   async function fetchMovies() {
     try {
-      const fetchedData = await fetch( MyFlixUrl +  `/movies`, {
-              headers: {
+      const fetchedData = await fetch(MyFlixUrl + `/movies`, {
+        headers: {
           Authorization: `Bearer ${token}`,
         },
       });
@@ -67,22 +67,23 @@ export const MainView = () => {
 
   //Used to return gallery of images
 
-useEffect(() => {
-  fetch(`${MyFlixUrl}/images`, {
-  // fetch('http://localhost:8080/images', {
-  
+  useEffect(() => {
+    fetch(`${MyFlixUrl}/images`, {
+      // fetch('http://localhost:8080/images', {
+
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin":
           // "http:localhost:8080",
-          "MyFlix-Load-Balancer-2030192027.us-east-1.elb.amazonaws.com/",
+          // "MyFlix-Load-Balancer-2030192027.us-east-1.elb.amazonaws.com/",
+          "MyFlix-App-Load-Balancer-754907701.us-east-1.elb.amazonaws.com"
       },
     })
       .then((res) => {
         return res.json();
       })
-    .then((data) => {
-      console.log(data);
+      .then((data) => {
+        console.log(data);
         const newGallery = data.Contents.map((image) => {
           return image.Key;
         });
@@ -122,7 +123,7 @@ useEffect(() => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                      <SignupView />  
+                    <SignupView />
                   </Col>
                 )}
               </>
@@ -141,7 +142,7 @@ useEffect(() => {
                     <LoginView onLoggedIn={(user, token) => {
                       setUser(user);
                       setToken(token);
-                      }}
+                    }}
                     />
                   </Col>
                 )}
@@ -214,7 +215,7 @@ useEffect(() => {
                       setUser(null);
                       setToken(null);
                       localStorage.clear();
-                      }}
+                    }}
                     />
                   </Col>
                 )}
@@ -230,16 +231,16 @@ useEffect(() => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : (
-                    <Col>
-                      <GalleryView 
-                        gallery={gallery}
-                        upLoadImage={(imageName) => {
-                          setGallery((prevGallery) => [
-                            ...prevGallery,
-                            imageName,
-                          ]);
-                        }}
-                      />
+                  <Col>
+                    <GalleryView
+                      gallery={gallery}
+                      upLoadImage={(imageName) => {
+                        setGallery((prevGallery) => [
+                          ...prevGallery,
+                          imageName,
+                        ]);
+                      }}
+                    />
                   </Col>
                 )}
               </>
