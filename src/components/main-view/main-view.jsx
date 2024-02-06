@@ -76,7 +76,7 @@ export const MainView = () => {
         "Access-Control-Allow-Origin":
           // "http:localhost:8080",
           // "MyFlix-Load-Balancer-2030192027.us-east-1.elb.amazonaws.com/",
-          "MyFlix-App-Load-Balancer-754907701.us-east-1.elb.amazonaws.com"
+          "http://MyFlix-App-Load-Balancer-754907701.us-east-1.elb.amazonaws.com"
       },
     })
       .then((res) => {
